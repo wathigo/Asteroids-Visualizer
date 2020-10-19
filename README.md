@@ -1,1 +1,2 @@
 # NEOs VISUALIZER
+A web application that displays asteroids that are heading towards earth based on [NASA NeoWs API](https://api.nasa.gov/#:~:text=NeoWs%20(Near%20Earth%20Object%20Web,browse%20the%20overall%20data%2Dset.).
