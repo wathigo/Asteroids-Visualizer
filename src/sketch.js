@@ -39,7 +39,7 @@ const sketch = ({ context }) => {
   const earthTexture = loader.load("../assets/earth.jpg");
 
   // // MATERIALS
-  
+
   const earthMaterial = new THREE.MeshStandardMaterial({ map: earthTexture });
   var material = new THREE.PointsMaterial({
     color: 0x555555
