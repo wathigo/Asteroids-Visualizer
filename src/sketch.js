@@ -1,4 +1,6 @@
 // Imports & constants
+import createSpotlights from "./helpers/create_spotlights";
+
 global.THREE = require("three");
 require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
@@ -70,7 +72,7 @@ const sketch = ({ context }) => {
   scene.add(light);
 
   // illuminate the earth
-  // createSpotlights(scene);
+  createSpotlights(scene);
 
   return {
     render({ time }) {
