@@ -52,16 +52,7 @@ const sketch = ({ context }) => {
 
   // TEXTURES
   const loader = new THREE.TextureLoader();
-  const mercuryTexture = loader.load("../assets/mercury.jpg");
-  const venusTexture = loader.load("../assets/venus.jpg");
   const earthTexture = loader.load("../assets/earth.jpg");
-  const marsTexture = loader.load("../assets/mars.jpg");
-  const jupiterTexture = loader.load("../assets/jupiter.jpg");
-  const saturnTexture = loader.load("../assets/saturn.jpg");
-  const uranusTexture = loader.load("../assets/uranus.jpg");
-  const neptuneTexture = loader.load("../assets/neptune.jpg");
-  const plutoTexture = loader.load("../assets/pluto.jpeg");
-  const sunTexture = loader.load("../assets/sun.jpg");
 
   // // MATERIALS
   
