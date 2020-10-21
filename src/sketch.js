@@ -1,4 +1,5 @@
 // Imports & constants
+import createAsteroids from "./helpers/create_asteroids";
 import createSpotlights from "./helpers/create_spotlights";
 
 global.THREE = require("three");
@@ -12,9 +13,22 @@ const settings = {
   scaleToView: true
 };
 
-var SCREEN_WIDTH = window.innerWidth;
-var SCREEN_HEIGHT = window.innerHeight;
+const SCREEN_WIDTH = window.innerWidth;
+const SCREEN_HEIGHT = window.innerHeight;
 
+const update = (pointCloud, asteroids, renderer, scene, camera) => {
+  pointCloud.rotation.x -= 0.0001;
+  //pointCloud.rotation.y -= 0.001;
+  pointCloud.rotation.z -= 0.0001;
+  asteroids.forEach(function (obj) {
+    obj.rotation.x -= obj.r.x;
+    obj.rotation.y -= obj.r.y;
+    obj.rotation.z -= obj.r.z;
+  })
+
+  // renderer.render(scene, camera);
+  // requestAnimationFrame(update(pointCloud, asteroids, renderer, scene, camera))
+}
 
 const sketch = ({ context }) => {
 
@@ -38,25 +52,37 @@ const sketch = ({ context }) => {
 
   // TEXTURES
   const loader = new THREE.TextureLoader();
+  const mercuryTexture = loader.load("../assets/mercury.jpg");
+  const venusTexture = loader.load("../assets/venus.jpg");
   const earthTexture = loader.load("../assets/earth.jpg");
+  const marsTexture = loader.load("../assets/mars.jpg");
+  const jupiterTexture = loader.load("../assets/jupiter.jpg");
+  const saturnTexture = loader.load("../assets/saturn.jpg");
+  const uranusTexture = loader.load("../assets/uranus.jpg");
+  const neptuneTexture = loader.load("../assets/neptune.jpg");
+  const plutoTexture = loader.load("../assets/pluto.jpeg");
+  const sunTexture = loader.load("../assets/sun.jpg");
 
   // // MATERIALS
-
+  
   const earthMaterial = new THREE.MeshStandardMaterial({ map: earthTexture });
-  var material = new THREE.PointsMaterial({
+  const material = new THREE.PointsMaterial({
     color: 0x555555
   });
 
-  var geometry = new THREE.Geometry();
+  // MESHES
+  const geometry = new THREE.Geometry();
 
-  var x, y, z;
-  for (var i = 0; i < 2000; i++) {
+  let x, y, z;
+  for (let i = 0; i < 2000; i++) {
     x = (Math.random() * SCREEN_WIDTH * 2) - SCREEN_WIDTH;
     y = (Math.random() * SCREEN_HEIGHT * 2) - SCREEN_HEIGHT;
     z = (Math.random() * 3000) - 1500;
 
     geometry.vertices.push(new THREE.Vector3(x, y, z));
   };
+
+  const asteroids = createAsteroids(scene);
 
   const earthGeometry = new THREE.SphereGeometry(1, 32, 16);
   const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
@@ -65,7 +91,7 @@ const sketch = ({ context }) => {
   scene.add(earthMesh);
 
   //LIGHTING
-  var pointCloud = new THREE.PointCloud(geometry, material);
+  const pointCloud = new THREE.PointCloud(geometry, material);
   scene.add(pointCloud);
   const light = new THREE.PointLight("white", 1.25);
   light.position.set(0, 0, 0);
