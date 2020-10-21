@@ -52,7 +52,7 @@ const sketch = ({ context }) => {
 
   // TEXTURES
   const loader = new THREE.TextureLoader();
-  const earthTexture = loader.load("../assets/earth.jpg");
+  const earthTexture = loader.load("https://imgur.com/dsrUYy8");
 
   // // MATERIALS
   
