@@ -1,6 +1,6 @@
 import ColorLuminance from "./color_luminance"
 
-const createRock = (size, spreadX, maxWidth, maxHeight, maxDepth, scene) => {
+const createRock = (size, spreadX, maxWidth, maxHeight, maxDepth, scene, asteroidTexture) => {
     const geometry = new THREE.DodecahedronGeometry(size, 1);
     geometry.vertices.forEach(function (v) {
       v.x += (0 - Math.random() * (size / 4));
@@ -11,8 +11,8 @@ const createRock = (size, spreadX, maxWidth, maxHeight, maxDepth, scene) => {
     color = ColorLuminance(color, 2 + Math.random() * 10);
     // console.log(color);
     const texture = new THREE.MeshStandardMaterial({
-      color: color,
-      flatShading: THREE.FlatShading,
+      map: asteroidTexture,
+      // flatShading: THREE.FlatShading,
       // shininess: 0.5,
       roughness: 0.8,
       metalness: 1

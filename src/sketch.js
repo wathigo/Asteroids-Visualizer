@@ -54,6 +54,7 @@ const sketch = ({ context }) => {
   const loader = new THREE.TextureLoader();
   loader.crossOrigin = '';
   const earthTexture = loader.load("../assets/earth.jpg");
+  const asteroidTexture = loader.load("../assets/asteroid.jpg");
 
   // // MATERIALS
   
@@ -74,7 +75,7 @@ const sketch = ({ context }) => {
     geometry.vertices.push(new THREE.Vector3(x, y, z));
   };
 
-  const asteroids = createAsteroids(scene);
+  const asteroids = createAsteroids(scene, asteroidTexture);
 
   const earthGeometry = new THREE.SphereGeometry(1, 32, 16);
   const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
