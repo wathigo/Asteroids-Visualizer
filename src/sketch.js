@@ -51,9 +51,9 @@ const sketch = ({ context }) => {
   const scene = new THREE.Scene();
 
   // TEXTURES
-  THREE.ImageUtils.crossOrigin = 'anonymous';
   const loader = new THREE.TextureLoader();
-  const earthTexture = loader.load("https://imgur.com/dsrUYy8");
+  loader.crossOrigin = '';
+  const earthTexture = loader.load("../assets/earth.jpg");
 
   // // MATERIALS
   
